@@ -1,0 +1,31 @@
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        if not s:
+            return 0
+        output = 0
+        
+        def palindrome(l,r):
+            res = 0
+            
+            while l >= 0 and r < len(s) and s[l] == s[r]:
+                res += 1
+                l-=1
+                r+=1
+            
+            return res
+        
+        for i in range(len(s)):
+            output += palindrome(i,i)
+        for i in range(len(s)-1):
+            output += palindrome(i,i+1)
+        
+        return output
+        
+
+
+
+        
+
+            
+
+                
